@@ -1,0 +1,212 @@
+<div id="appSwiper">
+  <swiper v-cloak ref="mySwiper" :options="swiperOptions">
+    <swiper-slide>
+      <div
+        class="item swiper-lazy"
+        style="background-position: left center"
+        style="position: relative"
+      >
+        <div class="flag">
+          <div
+            class="img-mask swiper-lazy swiper-default-bgImg"
+            data-background="<%- theme.homePage1.defaultImg %>"
+          ></div>
+          <div class="flag-text">
+            <div class="oneline"><%- theme.homePage1.oneline %></div>
+            <div class="blackCard">
+              <div class="blackCardTitle">
+                <%- theme.homePage1.blackCardTitle %>
+              </div>
+              <div class="blackCardDescribe">
+                <%- theme.homePage1.blackCardDescribe %>
+              </div>
+            </div>
+            <div class="flag-text-btns">
+              <% if(theme.homePage1.defaultLeftBtnText) { %>
+              <div class="ani animated">
+                <a
+                  href="<%= theme.homePage1.defaultLeftBtnLink %>"
+                  class="read-more swiper-btn-color"
+                  style=""
+                  ><%= theme.homePage1.defaultLeftBtnText %></a
+                >
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper>
+
+  <div id="scroll-down" @click="toPostContent()">
+    <a href="javascript:;">
+      <i class="fas fa-angle-down scroll-down-effects"></i>
+    </a>
+  </div>
+</div>
+
+<script>
+  var vm = new Vue({
+    el: "#appSwiper",
+    data: {
+      swiperOptions: {
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true // 允许点击小圆点跳转
+        },
+
+        lazy: {
+          loadPrevNext: true
+        },
+        on: {
+          init: function () {
+            swiperAnimateCache(this); //隐藏动画元素
+            swiperAnimate(this); //初始化完成开始动画
+          }
+        }
+        // Some Swiper option/callback...
+      }
+    },
+    computed: {
+      swiper() {
+        return this.$refs.mySwiper.$swiper;
+      }
+    },
+    mounted() {
+      // console.log('Current Swiper instance object', this.swiper)
+      // this.swiper.slideTo(0, 1000, false)
+    },
+    methods: {
+      toPostContent() {
+        const fullHeight = $(window).height() - 60;
+        $("html,body").animate({ scrollTop: fullHeight }, 500);
+      }
+    },
+    created() {}
+  });
+</script>
+<style>
+  #appSwiper {
+    position: relative;
+    user-select: none;
+    overflow: hidden;
+    font-family: Titillium Web, "PingFang SC", "Hiragino Sans GB",
+      "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
+  }
+
+  .swiper-container {
+    overflow: hidden;
+    z-index: 0;
+  }
+  .swiper-slide {
+    height: 100vh;
+  }
+  .swiper-slide .item {
+    width: 100%;
+    height: 100%;
+  }
+  .img-mask {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .flag {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    color: #ffffff;
+    height: 100%;
+  }
+  .flag-text {
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 70%;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 9999;
+  }
+
+  .flag-text .oneline {
+    font-weight: bold;
+    font-size: 20px;
+    color: <%- theme.color_scheme.common.link %>;
+  }
+
+  .flag-text .blackCard {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 30px;
+    margin: 10px 0;
+    max-width: 60%;
+  }
+
+  .flag-text .blackCard .blackCardTitle {
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .flag-text .blackCard .blackCardDescribe {
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .flag-text .read-more {
+    margin-bottom: 30px;
+    padding: 15px 30px;
+    color: #ffffff;
+    border-radius: 50px;
+  }
+  .flag-text-btns {
+    margin-top: 30px;
+    justify-content: center;
+  }
+  .swiper-btn-color {
+    display: inline-block;
+    z-index: 1;
+    background-color: <%- theme.color_scheme.common.link %>;
+    border: 1px solid <%- theme.color_scheme.common.link %> ;
+  }
+  .swiper-btn-color:hover {
+    border: 1px solid #fff !important;
+    font-weight: bold;
+  }
+
+  #scroll-down {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2;
+  }
+  #scroll-down a {
+    color: #fff;
+  }
+  @-webkit-keyframes rightan {
+    0% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(-30px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+  }
+  .scroll-down-effects {
+    animation: rightan 1.5s infinite;
+  }
+</style>
