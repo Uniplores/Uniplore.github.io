@@ -17,7 +17,7 @@
       %>
       <% structure_list.forEach(function (item) { %>
       <div class="onceWorld">
-        <img src="<%= item.picture%>" mode="scaleToFill" />
+        <img class="onceWorldImg" src="<%= item.picture%>" mode="scaleToFill" />
         <div class="title">
           <%= item.title %>
         </div>
@@ -28,9 +28,9 @@
       <% }); %>
     </div>
     <% if(theme.worldStructure.bootomText) { %>
-      <div class="bottom">
-        <%- theme.worldStructure.bootomText %>
-      </div>
+    <div class="bottom">
+      <%- theme.worldStructure.bootomText %>
+    </div>
     <% }; %>
   </div>
 </div>
@@ -45,7 +45,7 @@
     created() {}
   });
 </script>
-<style>
+<style lang="scss" scoped>
   #worldStructure {
     width: 100%;
     height: 100vh;
@@ -65,67 +65,67 @@
     flex-direction: column;
     justify-content: space-between;
     z-index: 9999;
-  }
 
-  .structureData .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-  .structureData .top .left {
-    font-size: 30px;
-  }
+      .left {
+        font-size: 30px;
+      }
 
-  .structureData .top .read-more {
-    padding: 12px 28px;
-    color: #ffffff;
-    border-radius: 10px;
-  }
+      .read-more {
+        padding: 12px 28px;
+        color: #ffffff;
+        border-radius: 10px;
+      }
 
-  .structureData .top .swiper-btn-color {
-    display: inline-block;
-    z-index: 1;
-    background-color: <%- theme.worldStructure.rightBtnColor %>;
-    border: 1px solid <%- theme.worldStructure.rightBtnColor %>;
-  }
+      .swiper-btn-color {
+        display: inline-block;
+        z-index: 1;
+        background-color: <%- theme.worldStructure.rightBtnColor %>;
+        border: 1px solid <%- theme.worldStructure.rightBtnColor %>;
+      }
+    }
 
-  .structureData .center {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 80px;
-  }
+    .center {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 80px;
 
-  .structureData .center .onceWorld {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+      .onceWorld {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-  .onceWorld img {
-    width: 240px;
-    height: 240px;
-    margin-bottom: 30px;
-  }
+        .onceWorldImg {
+          width: 240px;
+          height: 240px;
+          margin-bottom: 30px;
+        }
 
-  .onceWorld .title {
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: bold;
-  }
+        .title {
+          font-size: 18px;
+          line-height: 26px;
+          font-weight: bold;
+        }
 
-  .onceWorld .describe {
-    font-size: 14px;
-    line-height: 26px;
-    font-weight: bold;
-  }
+        .describe {
+          font-size: 14px;
+          line-height: 26px;
+          font-weight: bold;
+        }
+      }
+    }
 
-  .structureData .bottom {
-    margin-top: 130px;
-    text-align: center;
-    font-size: 35px;
-    line-height: 2;
-    font-weight: bold;
+    .bottom {
+      margin-top: 130px;
+      text-align: center;
+      font-size: 35px;
+      line-height: 2;
+      font-weight: bold;
+    }
   }
 </style>
