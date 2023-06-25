@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>uniplores</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="/" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">uniplores</h3>
+      <h5 class="drawer-box-head_desc"></h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">uniplores</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+  <div id="appSwiper">
+  <swiper v-cloak ref="mySwiper" :options="swiperOptions">
+    <swiper-slide>
+      <div class="item swiper-lazy" style="background-position: left center"
+          style="position: relative">
+        <div class="flag">
+          <div class="img-mask swiper-lazy swiper-default-bgImg"
+              data-background="/medias/img/uniHome/homePage1/homePage1Back.svg"></div>
+          <div class="flag-text">
+            <div class="oneline">Uniplore Design Studio</div>
+            <div class="blackCard">
+              <div class="blackCardTitle">
+                我们团队的工作 <br> 制作精良持续的内容 <br> 给玩家
+              </div>
+              <div class="blackCardDescribe">
+                为玩家提供一个可持续性发展不断创作新的内容以及完善完整的世界观<br>是我们团队的唯一追求 我们将致力于打造一个更加充满创造性、挑战性和多元化特色的科幻世界，让玩家在<br>这里获得更多新鲜感和乐趣的体验.
+              </div>
+            </div>
+            <div class="flag-text-btns">
+              
+              <div class="ani animated">
+                <a target="_blank" rel="noopener" href="https://yuang01.gitee.io/2021/02/08/hexo-theme-bamboo-new/"
+                    class="read-more swiper-btn-color"
+                    style="">查看更多详情内容</a>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper>
+
+  <div id="scroll-down" @click="toPostContent()">
+    <a href="javascript:;">
+      <i class="fas fa-angle-down scroll-down-effects"></i>
+    </a>
+  </div>
+</div>
+
+<script>
+  var vm = new Vue({
+    el: "#appSwiper",
+    data: {
+      swiperOptions: {
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true // 允许点击小圆点跳转
+        },
+
+        lazy: {
+          loadPrevNext: true
+        },
+        on: {
+          init: function() {
+            swiperAnimateCache(this); //隐藏动画元素
+            swiperAnimate(this); //初始化完成开始动画
+          }
+        }
+        // Some Swiper option/callback...
+      }
+    },
+    computed: {
+      swiper() {
+        return this.$refs.mySwiper.$swiper;
+      }
+    },
+    mounted() {
+      // console.log('Current Swiper instance object', this.swiper)
+      // this.swiper.slideTo(0, 1000, false)
+    },
+    methods: {
+      toPostContent() {
+        const fullHeight = $(window).height() - 60;
+        $("html,body").animate({
+          scrollTop: fullHeight
+        }, 500);
+      }
+    },
+    created() {}
+  });
+</script>
+<style lang="scss" scoped>
+  #appSwiper {
+    position: relative;
+    user-select: none;
+    overflow: hidden;
+    font-family: Titillium Web, "PingFang SC", "Hiragino Sans GB",
+      "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
+  }
+
+  .swiper-container {
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .swiper-slide {
+    height: 100vh;
+
+    .item {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .img-mask {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .flag {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    color: #ffffff;
+    height: 100%;
+  }
+
+  .flag-text {
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 70%;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 9999;
+
+    .oneline {
+      font-weight: bold;
+      font-size: 20px;
+      color: #FA9021;
+    }
+
+    .blackCard {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      padding: 30px;
+      margin: 10px 0;
+      max-width: 60%;
+
+      .blackCardTitle {
+        font-weight: 800;
+        font-size: 50px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+
+      .blackCardDescribe {
+        font-size: 14px;
+        line-height: 2;
+      }
+    }
+
+    .read-more {
+      margin-bottom: 30px;
+      padding: 15px 30px;
+      color: #ffffff;
+      border-radius: 50px;
+    }
+  }
+
+
+
+
+  .flag-text-btns {
+    margin-top: 30px;
+    justify-content: center;
+  }
+
+  .swiper-btn-color {
+    display: inline-block;
+    z-index: 1;
+    background-color: #FA9021;
+    border: 1px solid #FA9021;
+  }
+
+  .swiper-btn-color:hover {
+    border: 1px solid #fff !important;
+    font-weight: bold;
+  }
+
+  #scroll-down {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  #scroll-down a {
+    color: #fff;
+  }
+
+  @-webkit-keyframes rightan {
+    0% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+
+    50% {
+      transform: translateY(-30px);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+  }
+
+  .scroll-down-effects {
+    animation: rightan 1.5s infinite;
+  }
+</style>
+
+
+
+  <div id="worldStructure">
+  <div class="structureData">
+    <div class="top">
+      <div class="left">初始赛季的四大世界结构</div>
+      <div class="right">
+        <div class="ani animated">
+          <a target="_blank" rel="noopener" href="https://yuang01.gitee.io/2021/02/08/hexo-theme-bamboo-new/"
+              class="read-more swiper-btn-color">
+            查看全部
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="center">
+      
+      
+      <div class="onceWorld">
+        <img class="onceWorldImg lazyload placeholder" src="/medias/img/uniHome/worldStructure/world1.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/worldStructure/world1.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
+        <div class="title">
+          探索者赛季星球
+        </div>
+        <div class="describe">
+          The Trailblazer
+        </div>
+      </div>
+      
+      <div class="onceWorld">
+        <img class="onceWorldImg lazyload placeholder" src="/medias/img/uniHome/worldStructure/world2.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/worldStructure/world2.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
+        <div class="title">
+          富尔克姆星际城
+        </div>
+        <div class="describe">
+          Fulcrum Star City
+        </div>
+      </div>
+      
+      <div class="onceWorld">
+        <img class="onceWorldImg lazyload placeholder" src="/medias/img/uniHome/worldStructure/world3.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/worldStructure/world3.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
+        <div class="title">
+          上载空间 · 战争星球
+        </div>
+        <div class="describe">
+          Upload Space · War Planet
+        </div>
+      </div>
+      
+      <div class="onceWorld">
+        <img class="onceWorldImg lazyload placeholder" src="/medias/img/uniHome/worldStructure/world4.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/worldStructure/world4.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
+        <div class="title">
+          太空轮盘维度
+        </div>
+        <div class="describe">
+          Space  Wheel 
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="bottom">
+      四大各具特色的世界构成了一个完整的世界结构 <br> 主城区域不在只是登入的作用.
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  var vm = new Vue({
+    el: "#worldStructure",
+    data: {},
+    computed: {},
+    mounted() {},
+    methods: {},
+    created() {}
+  });
+</script>
+<style lang="scss" scoped>
+  #worldStructure {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    color: #ffffff;
+    z-index: 0;
+  }
+
+  .structureData {
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 80%;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .left {
+        font-size: 30px;
+      }
+
+      .read-more {
+        padding: 12px 28px;
+        color: #ffffff;
+        border-radius: 10px;
+      }
+
+      .swiper-btn-color {
+        display: inline-block;
+        z-index: 1;
+        background-color: #323a40;
+        border: 1px solid #323a40;
+      }
+    }
+
+    .center {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 80px;
+
+      .onceWorld {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .onceWorldImg {
+          width: 240px;
+          height: 240px;
+          margin-bottom: 30px;
+        }
+
+        .title {
+          font-size: 18px;
+          line-height: 26px;
+          font-weight: bold;
+        }
+
+        .describe {
+          font-size: 14px;
+          line-height: 26px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .bottom {
+      margin-top: 130px;
+      text-align: center;
+      font-size: 35px;
+      line-height: 2;
+      font-weight: bold;
+    }
+  }
+</style>
+
+
+
+  <div id="buildOrgan">
+  <div class="buildOrganData">
+    <div class="top">
+      <div class="title">
+        建立你的组织
+      </div>
+      <div class="detail">
+        集结你的伙伴招募各路玩家 一起组建属于你们的组织 <br> 你可以在组织办公室完成史诗装备的锻造等其他物品的研究制作 <br> 在赛季生存星球建造不会删档的组织基地壮大你们的势力 当然还有抵御那些怪物
+      </div>
+
+    </div>
+
+    
+    <div class="bottom">
+      <img class="bottomImg" src="/medias/img/uniHome/buildOrgan/buildOrgan.svg"
+          mode="scaleToFill">
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  var vm = new Vue({
+    el: "#buildOrgan",
+    data: {},
+    computed: {},
+    mounted() {},
+    methods: {},
+    created() {}
+  });
+</script>
+<style lang="scss" scoped>
+  #buildOrgan {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    color: #ffffff;
+    z-index: 0;
+  }
+
+  .buildOrganData {
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 80%;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .top {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .title {
+        font-weight: bold;
+        font-size: 34px;
+        margin-bottom: 30px;
+      }
+
+      .detail {
+        line-height: 2;
+        font-size: 20px;
+      }
+    }
+
+    .bottom {
+      width: 100%;
+
+      .bottomImg {
+        width: 100%;
+        margin-top: 45px;
+      }
+    }
+  }
+</style>
+
+
+
+  <div id="rolePlay">
+  <div class="rolePlayData">
+    <div class="top">
+      <div class="title">
+        角色扮演<br>在这里你可以更换N多种角色外观及武器外观
+      </div>
+      <div class="detail">
+        官方商城有上百种人物外观以及物品贴片装备外观等提供选购.每件商品都有指定编码 以确保它的唯一性 <br> 达到等级要求的团体组织也可以购买制作权限 制作后售卖属于你们组织品牌的商品
+      </div>
+    </div>
+    <div class="center">
+      
+      
+      <div class="onceRole">
+        
+        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/mobile.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/mobile.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
+        <div class="title">
+          Mobile Game Development
+        </div>
+        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
+            mode="scaleToFill" />
+        
+      </div>
+      
+      <div class="onceRole">
+        
+        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/pc.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/pc.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
+        <div class="title">
+          PC Game Development
+        </div>
+        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
+            mode="scaleToFill" />
+        
+      </div>
+      
+      <div class="onceRole">
+        
+        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/ps4.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/ps4.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
+        <div class="title">
+          PS4 Game Development
+        </div>
+        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
+            mode="scaleToFill" />
+        
+      </div>
+      
+      <div class="onceRole">
+        
+        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/solutions.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/solutions.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
+        <div class="title">
+          AR/VR Solutions
+        </div>
+        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
+            mode="scaleToFill" />
+        
+      </div>
+      
+      <div class="onceRole">
+        
+      </div>
+      
+      <div class="onceRole">
+        
+        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/design.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/design.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
+        <div class="title">
+          AR/ VR design
+        </div>
+        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
+            mode="scaleToFill" />
+        
+      </div>
+      
+      <div class="onceRole">
+        
+        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/modelings.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/modelings.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
+        <div class="title">
+          3D Modelings
+        </div>
+        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
+            mode="scaleToFill" />
+        
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+<script>
+  var vm = new Vue({
+    el: "#rolePlay",
+    data: {},
+    computed: {},
+    mounted() {},
+    methods: {},
+    created() {}
+  });
+</script>
+<style>
+  #rolePlay {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    color: #ffffff;
+    z-index: 0;
+    background-image: url('/medias/img/uniHome/rolePlay/rolePlay.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .rolePlayData {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 100px;
+
+      .title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+        margin-bottom: 25px;
+      }
+
+      .detail {
+        text-align: center;
+        line-height: 2;
+        font-size: 16px;
+      }
+    }
+
+    .center {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-row-gap: 60px;
+      grid-column-gap: 100px;
+
+      .onceRole {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .onceRoleImg {
+          height: 65px;
+          width: 65px;
+        }
+
+        .title {
+          margin: 30px 0;
+        }
+      }
+    }
+  }
+</style>
+
+
+
+  <div id="getAdvice">
+  <div class="getAdviceData">
+    <div class="top">
+      <div class="title">
+        我们渴求您的建议
+      </div>
+      <div class="detail">
+        通过邮件 向我们反馈你的意见与建议 我们会非常珍重您的信息<br>请记得最后的署名 您的游戏ID及联系方式
+      </div>
+    </div>
+
+    <div class="center">
+      <div>
+        <div class="title">
+          我们的EMAIL地址
+        </div>
+        <div class="detail">
+          加入团队的审核请求不在这个邮箱地址受理<br>请记得务必不要发审核请求发送到这个邮箱 谢谢您的支持！
+        </div>
+      </div>
+      <div class="right">
+        <div class="rightEmail">
+          Uniplore@outlook.com
+        </div>
+        <div class="ani animated" @click="copyMailbox()">
+          <a class="rightBtn">
+            复制
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <img class="backgroundImg" src="/medias/img/uniHome/getAdvice/backgroundImg.svg"
+      mode="scaleToFill">
+  
+</div>
+
+<script>
+  var vm = new Vue({
+    el: "#getAdvice",
+    data: {},
+    computed: {},
+    mounted() {},
+    methods: {
+      copyMailbox() {
+        navigator.clipboard.writeText('Uniplore@outlook.com').then((result) => {
+          this.$notify({
+            title: "复制成功",
+            content: "邮件已复制,请联系我们吧!",
+            type: 'success'
+          })
+        }).catch((err) => {
+          console.log(err);
+        });
+
+      }
+
+
+    },
+    created() {}
+  });
+</script>
+<style lang="scss" scoped>
+  #getAdvice {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    color: #ffffff;
+    z-index: 0;
+
+    .backgroundImg {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 750px;
+      z-index: 1;
+    }
+  }
+
+  .getAdviceData {
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 80%;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+
+    .top {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 85px;
+
+      .title {
+        font-weight: bold;
+        font-size: 34px;
+        margin-bottom: 30px;
+      }
+
+      .detail {
+        line-height: 2;
+        font-size: 20px;
+      }
+    }
+
+    .center {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1C140F;
+      border-radius: 15px;
+      padding: 40px 50px;
+
+      .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+      }
+
+      .detail {
+        line-height: 2;
+        font-size: 20px;
+      }
+
+      .right {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        border-radius: 8px;
+        width: 430px;
+        padding: 12px 20px;
+
+        .rightEmail {
+          color: #898989;
+        }
+
+        .rightBtn {
+          padding: 12px 28px;
+          color: #ffffff;
+          border-radius: 10px;
+          display: inline-block;
+          z-index: 1;
+          background-color: #DC7000;
+          border: 1px solid #DC7000;
+        }
+      }
+    }
+
+
+
+
+  }
+</style>
+
+
+
+<div id="l_main">
+  <div class="l_content">
+
+    <!-- 背景 -->
+    <div class="bg-floor" id="home-bg-floor" style="
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+      "></div>
+  </div>
+</div>
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || '#192229';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/yuang01">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="/"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
