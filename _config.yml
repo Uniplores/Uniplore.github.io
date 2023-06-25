@@ -103,5 +103,5 @@ theme: hexo-theme-bamboo
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/Uniplores/Uniplores.github.io.git
+  repo: https://github.com/Uniplores/uniplores.github.io.git
   branch: master
