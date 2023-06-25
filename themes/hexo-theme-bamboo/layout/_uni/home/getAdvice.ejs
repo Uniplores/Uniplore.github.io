@@ -18,13 +18,18 @@
           <%- theme.getAdvice.centerDetail %>
         </div>
       </div>
-      <div class="ani animated">
-        <a href="<%= theme.getAdvice.rightBtnLink %>" class="rightBtn">
-          <%= theme.getAdvice.rightBtnText %>
-        </a>
+      <div class="right">
+        <div class="rightEmail">
+          <%= theme.getAdvice.rightEmail %>
+        </div>
+        <div class="ani animated" @click="copyMailbox()">
+          <a class="rightBtn">
+            <%= theme.getAdvice.rightBtnText %>
+          </a>
+        </div>
       </div>
     </div>
-    
+
   </div>
   <% if(theme.getAdvice.backgroundImg) { %>
   <img class="backgroundImg" src="<%= theme.getAdvice.backgroundImg%>"
@@ -38,7 +43,22 @@
     data: {},
     computed: {},
     mounted() {},
-    methods: {},
+    methods: {
+      copyMailbox() {
+        navigator.clipboard.writeText('<%= theme.getAdvice.rightEmail %>').then((result) => {
+          this.$notify({
+            title: "<%= theme.getAdvice.copyTitle %>",
+            content: "<%= theme.getAdvice.copyContent %>",
+            type: 'success'
+          })
+        }).catch((err) => {
+          console.log(err);
+        });
+
+      }
+
+
+    },
     created() {}
   });
 </script>
@@ -55,7 +75,8 @@
       position: absolute;
       right: 0;
       bottom: 0;
-      height: 630px;
+      height: 750px;
+      z-index: 1;
     }
   }
 
@@ -69,11 +90,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 2;
 
     .top {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      margin-bottom: 85px;
 
       .title {
         font-weight: bold;
@@ -87,15 +110,46 @@
       }
     }
 
-    .cneter {
-      .rightBtn {
-        padding: 12px 28px;
-        color: #ffffff;
-        border-radius: 10px;
-        display: inline-block;
-        z-index: 1;
-        background-color: <%- theme.getAdvice.rightBtnColor %>;
-        border: 1px solid <%- theme.getAdvice.rightBtnColor %>;
+    .center {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: <%- theme.getAdvice.centerBackColor %>;
+      border-radius: 15px;
+      padding: 40px 50px;
+
+      .title {
+        font-size: 34px;
+        margin-bottom: 20px;
+      }
+
+      .detail {
+        line-height: 2;
+        font-size: 20px;
+      }
+
+      .right {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        border-radius: 8px;
+        width: 430px;
+        padding: 12px 20px;
+
+        .rightEmail {
+          color: #898989;
+        }
+
+        .rightBtn {
+          padding: 12px 28px;
+          color: #ffffff;
+          border-radius: 10px;
+          display: inline-block;
+          z-index: 1;
+          background-color: <%- theme.getAdvice.rightBtnColor %>;
+          border: 1px solid <%- theme.getAdvice.rightBtnColor %>;
+        }
       }
     }
 
