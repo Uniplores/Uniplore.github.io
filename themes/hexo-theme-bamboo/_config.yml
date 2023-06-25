@@ -820,3 +820,13 @@ rolePlay:
       title: '3D Modelings'
   arrow: '/medias/img/uniHome/rolePlay/arrow.svg' #底部箭头
 
+getAdvice:
+  on: true # 设置为false, 则不显示
+  backgroundImg: '/medias/img/uniHome/getAdvice/backgroundImg.svg'
+  title: '我们渴求您的建议'
+  detail: '通过邮件 向我们反馈你的意见与建议 我们会非常珍重您的信息<br>请记得最后的署名 您的游戏ID及联系方式'
+  centerTitle: '我们的EMAIL地址'
+  centerDetail: '加入团队的审核请求不在这个邮箱地址受理<br>请记得务必不要发审核请求发送到这个邮箱 谢谢您的支持！'
+  rightBtnText: '查看全部' # 有边按钮文字, 空字符串则不显示
+  rightBtnLink: 'https://yuang01.gitee.io/2021/02/08/hexo-theme-bamboo-new/' # 右边按钮链接 
+  rightBtnColor: '#323a40'  #  red or #000 or rgba() ..
