@@ -1,37 +1,106 @@
-<div id="buildOrgan">
-    <div class="buildOrganData">
-      <div class="top">
-          <div class="title">
-              <%- theme.buildOrgan.title %>
-          </div>
-  
+<div id="rolePlay">
+  <div class="rolePlayData">
+    <div class="top">
+      <div class="title">
+        <%- theme.rolePlay.title %>
       </div>
-  
-      <% if(theme.buildOrgan.bottonImg) { %>
-      <div class="bottom">
-          <img src="<%= theme.buildOrgan.bottonImg%>" mode="scaleToFill" />
+      <div class="detail">
+        <%- theme.rolePlay.detail %>
       </div>
-      <% }; %>
     </div>
+    <div class="center">
+      <%
+        var rolePlay_list = theme.rolePlay.list || [];
+      %>
+      <% rolePlay_list.forEach(function (item) { %>
+      <div class="onceRole">
+        <% if(item.picture) { %>
+        <img class="onceRoleImg" src="<%= item.picture%>" mode="scaleToFill" />
+        <div class="title">
+          <%= item.title %>
+        </div>
+        <img class="arrow" src="<%= theme.rolePlay.arrow%>"
+            mode="scaleToFill" />
+        <% }; %>
+      </div>
+      <% }); %>
+    </div>
+
   </div>
-  
-  <script>
-    var vm = new Vue({
-      el: "#buildOrgan",
-      data: {},
-      computed: {},
-      mounted() {},
-      methods: {},
-      created() {}
-    });
-  </script>
-  <style>
-    #buildOrgan {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-      margin: 0 auto;
-      color: #ffffff;
+</div>
+
+<script>
+  var vm = new Vue({
+    el: "#rolePlay",
+    data: {},
+    computed: {},
+    mounted() {},
+    methods: {},
+    created() {}
+  });
+</script>
+<style>
+  #rolePlay {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    color: #ffffff;
+    z-index: 0;
+    background-image: url('<%- theme.rolePlay.backgroundImg %>');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .rolePlayData {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 100px;
+
+      .title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+        margin-bottom: 25px;
+      }
+
+      .detail {
+        text-align: center;
+        line-height: 2;
+        font-size: 16px;
+      }
     }
 
-  </style>
+    .center {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-row-gap: 60px;
+      grid-column-gap: 100px;
+
+      .onceRole {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .onceRoleImg {
+          height: 65px;
+          width: 65px;
+        }
+
+        .title {
+          margin: 30px 0;
+        }
+      }
+    }
+  }
+</style>
