@@ -86,3 +86,31 @@
     }
   }
 }
+
+.splitBar{
+  width: 100%
+  border: 1px solid  convert(hexo-config('homePage1.splitBarColor'))
+  position: relative
+  &::after{
+    content: " ";
+    width: 6px;
+    height: 6px;
+    background: convert(hexo-config('homePage1.splitBarColor'));
+    position: absolute;
+    display: block;
+    left: -3px;
+    top: -3px
+    border-radius: 4px
+  }
+  &::before{
+    content: " ";
+    width: 6px;
+    height: 6px;
+    background: convert(hexo-config('homePage1.splitBarColor'));
+    position: absolute;
+    display: block;
+    right: -3px;
+    top: -3px
+    border-radius: 4px
+  }
+}

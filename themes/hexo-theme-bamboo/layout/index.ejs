@@ -3,25 +3,24 @@
 <% }; %>
 
 
-<% if(theme.worldStructure.on) { %>
-<%- partial('_uni/home/worldStructure') %>
-<% }; %>
 
-<% if(theme.buildOrgan.on) { %>
-<%- partial('_uni/home/buildOrgan') %>
-<% }; %>
-
-<% if(theme.rolePlay.on) { %>
-<%- partial('_uni/home/rolePlay') %>
-<% }; %>
-
-<% if(theme.getAdvice.on) { %>
-<%- partial('_uni/home/getAdvice') %>
-<% }; %>
 
 
 <div id="l_main">
   <div class="l_content">
+
+    <% if(theme.worldStructure.on) { %>
+    <%- partial('_uni/home/worldStructure') %>
+    <% }; %>
+
+    <% if(theme.buildOrgan.on) { %>
+    <%- partial('_uni/home/buildOrgan') %>
+    <% }; %>
+
+    <% if(theme.rolePlay.on) { %>
+    <%- partial('_uni/home/rolePlay') %>
+    <% }; %>
+
 
     <!-- 背景 -->
     <div class="bg-floor" id="home-bg-floor" style="
@@ -34,3 +33,8 @@
       "></div>
   </div>
 </div>
+
+
+<% if(theme.getAdvice.on) { %>
+<%- partial('_uni/home/getAdvice') %>
+<% }; %>

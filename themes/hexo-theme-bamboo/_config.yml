@@ -578,7 +578,7 @@ color_scheme:
     # 首页文章列表的背景颜色, url("http://xxx.png") or red or #000 or rgba() ..
     postListBackground: 'rgba(255,255,255,1)'
     # 首页页面的底部背景颜色，空字符串透明('transparent')，可以是白色('#fff')等颜色, 也可以是图片，例如  'url("https://img11.360buyimg.com/ddimg/jfs/t1/169624/29/16/4603017/5fec2c79Eecbd536a/308b28b82a013cd2.png")'
-    bgFloor: '#192229' # 如果是图片地址，url里面请用双引号
+    bgFloor: 'linear-gradient(330deg, #3A3C40 0%, #030115 100%)' # 如果是图片地址，url里面请用双引号
     headerMenuBackgroundColor: '' 
     # headerMenuBackgroundColor:头部导航背景颜色, 为空则使用theme主题色, 
     # headerMenuBackgroundColor写法: rgba(268, 264, 269, 0.8) or #42b983 or red or 也可以是渐变颜色 linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)  or 也可以是url("图片地址")
@@ -773,6 +773,7 @@ homePage1:
   blackCardDescribe: '为玩家提供一个可持续性发展不断创作新的内容以及完善完整的世界观<br>是我们团队的唯一追求 我们将致力于打造一个更加充满创造性、挑战性和多元化特色的科幻世界，让玩家在<br>这里获得更多新鲜感和乐趣的体验.'
   defaultLeftBtnText: '查看更多详情内容' # 左边按钮文字, 空字符串则不显示
   defaultLeftBtnLink: 'https://yuang01.gitee.io/2021/02/08/hexo-theme-bamboo-new/' # 左边按钮链接 
+  splitBarColor: '#767676'
 
 worldStructure:
   on: true # 设置为false, 则不显示
@@ -806,22 +807,7 @@ rolePlay:
   backgroundImg: '/medias/img/uniHome/rolePlay/rolePlay.svg'
   title: '角色扮演<br>在这里你可以更换N多种角色外观及武器外观'
   detail: '官方商城有上百种人物外观以及物品贴片装备外观等提供选购.每件商品都有指定编码 以确保它的唯一性 <br> 达到等级要求的团体组织也可以购买制作权限 制作后售卖属于你们组织品牌的商品'
-  list: # list相当于数组对象，[{picture:'xx',title: 'xx', describe: 'xxx',}]根据自己实际情况，增加或者删除
-    - picture: '/medias/img/uniHome/rolePlay/mobile.svg'
-      title: 'Mobile Game Development'
-    - picture: '/medias/img/uniHome/rolePlay/pc.svg'
-      title: 'PC Game Development'
-    - picture: '/medias/img/uniHome/rolePlay/ps4.svg'
-      title: 'PS4 Game Development'
-    - picture: '/medias/img/uniHome/rolePlay/solutions.svg'
-      title: 'AR/VR Solutions'
-    - picture: '' #占位不填
-      title: ''
-    - picture: '/medias/img/uniHome/rolePlay/design.svg'
-      title: 'AR/ VR design'
-    - picture: '/medias/img/uniHome/rolePlay/modelings.svg'
-      title: '3D Modelings'
-  arrow: '/medias/img/uniHome/rolePlay/arrow.svg' #底部箭头
+ 
 
 getAdvice:
   on: true # 设置为false, 则不显示

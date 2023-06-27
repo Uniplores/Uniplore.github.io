@@ -9,21 +9,7 @@
       </div>
     </div>
     <div class="center">
-      <%
-        var rolePlay_list = theme.rolePlay.list || [];
-      %>
-      <% rolePlay_list.forEach(function (item) { %>
-      <div class="onceRole">
-        <% if(item.picture) { %>
-        <img class="onceRoleImg" src="<%= item.picture%>" mode="scaleToFill" />
-        <div class="title">
-          <%= item.title %>
-        </div>
-        <img class="arrow" src="<%= theme.rolePlay.arrow%>"
-            mode="scaleToFill" />
-        <% }; %>
-      </div>
-      <% }); %>
+     
     </div>
 
   </div>
@@ -47,9 +33,6 @@
     margin: 0 auto;
     color: #ffffff;
     z-index: 0;
-    background-image: url('<%- theme.rolePlay.backgroundImg %>');
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 
   .rolePlayData {

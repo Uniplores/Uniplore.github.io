@@ -30,6 +30,8 @@
       </div>
     </div>
 
+    <div class="splitBar"></div>
+
   </div>
   <% if(theme.getAdvice.backgroundImg) { %>
   <img class="backgroundImg" src="<%= theme.getAdvice.backgroundImg%>"
@@ -82,9 +84,9 @@
 
   .getAdviceData {
     top: 50%;
-    left: 10%;
+    left: 15%;
     transform: translateY(-50%);
-    width: 80%;
+    width: 70%;
     height: auto;
     position: absolute;
     display: flex;
@@ -117,6 +119,7 @@
       background: <%- theme.getAdvice.centerBackColor %>;
       border-radius: 15px;
       padding: 40px 50px;
+      margin-bottom: 300px;
 
       .title {
         font-size: 34px;
