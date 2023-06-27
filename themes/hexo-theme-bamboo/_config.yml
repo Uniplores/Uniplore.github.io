@@ -5,6 +5,9 @@ menu:
   Home:
     url: /
     icon: fas fa-home
+  Article:
+    url: /article
+    icon: fas fa-file-alt
   # Archives:
   #   url: /archives
   #   icon: fas fa-archive
@@ -228,7 +231,7 @@ goTop:
 
 # 图片点击放大功能, http://fancyapps.com/fancybox/
 fancybox: 
-  on: true
+  on: false
 
 # 统计网站访问数量
 busuanzi:
@@ -262,7 +265,7 @@ weather:
 
 # 全文搜索功能
 search:
-  on: true
+  on: false
 
 # 文章详情页底部显示上一篇文章和下一篇文章
 postNav:
@@ -369,28 +372,28 @@ notice:
   title: '公告'
   background: 'url("https://img10.360buyimg.com/ddimg/jfs/t1/166587/8/21344/72069/6088c24fEda5fdeb6/f9730ab637b7ca47.png")' # url("xxx") or red or #000 or rgba() ..
   list: # list相当于数组对象，[{title:'xx',date: 'xx', url: 'xxx', color: 'red'}]根据自己实际情况，增加或者删除
-    # - title: '#博客更新到2.0了'
-    #   date: '2021-04-28'
-    #   url: '/archives'   # 可以为空, 也可以是本地页面地址如 '/archives'
-    #   color: red   # 字体颜色
-    # - title: '#新增 轮播图支持三种模式了，功能也增强了 ~'
-    #   date: '2021-04-28'
-    #   url: 'http://baidu.com'
-    #   color: red
-    # - title: '#新增 支持二级导航'
-    #   date: '2021-04-28'
-    #   url: 'http://baidu.com'
-    #   color: blue
-    # - title: '#新增 归档，分类等页面头部图片位置可以设置为视频 ~'
-    #   date: '2021-04-28'
-    #   url: 'http://baidu.com'
-    #   color: '#42b983'
-    # - title: '#新增 头部导航可以设置为在顶部透明，并且可以任意设置背景颜色了 ~'
-    #   date: '2021-04-28'
-    #   url: 'http://baidu.com'
-    # - title: '#新增 首页增加了座右铭和公告栏目 ~'
-    #   date: '2021-04-28'
-    #   url: 'http://baidu.com'
+    - title: '#博客更新到2.0了'
+      date: '2021-04-28'
+      url: '/archives'   # 可以为空, 也可以是本地页面地址如 '/archives'
+      color: red   # 字体颜色
+    - title: '#新增 轮播图支持三种模式了，功能也增强了 ~'
+      date: '2021-04-28'
+      url: 'http://baidu.com'
+      color: red
+    - title: '#新增 支持二级导航'
+      date: '2021-04-28'
+      url: 'http://baidu.com'
+      color: blue
+    - title: '#新增 归档，分类等页面头部图片位置可以设置为视频 ~'
+      date: '2021-04-28'
+      url: 'http://baidu.com'
+      color: '#42b983'
+    - title: '#新增 头部导航可以设置为在顶部透明，并且可以任意设置背景颜色了 ~'
+      date: '2021-04-28'
+      url: 'http://baidu.com'
+    - title: '#新增 首页增加了座右铭和公告栏目 ~'
+      date: '2021-04-28'
+      url: 'http://baidu.com'
     
   
 
