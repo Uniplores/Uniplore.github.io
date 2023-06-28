@@ -7,7 +7,7 @@
 
 
 <div id="l_main">
-  <div class="l_content">
+  <div class="l_content uni_content">
 
     <% if(theme.worldStructure.on) { %>
     <%- partial('_uni/home/worldStructure') %>
@@ -38,3 +38,9 @@
 <% if(theme.getAdvice.on) { %>
 <%- partial('_uni/home/getAdvice') %>
 <% }; %>
+
+
+<style lang="scss" scoped>
+.uni_content{
+}
+</style>
