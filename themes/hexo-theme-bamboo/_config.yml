@@ -777,14 +777,21 @@ homePage1:
 
 worldStructure:
   on: true # 设置为false, 则不显示
-  title: '初始赛季的四大世界结构'
-  rightBtnText: '查看全部' # 左边按钮文字, 空字符串则不显示
-  rightBtnLink: 'https://yuang01.gitee.io/2021/02/08/hexo-theme-bamboo-new/' # 左边按钮链接 
-  rightBtnColor: '#323a40'  #  red or #000 or rgba() ..
+  title: '初始赛季的四大世界结构 <br> Four World Structures'
+  btnText: '查看全部' # 左边按钮文字, 空字符串则不显示
+  btnLink: 'https://yuang01.gitee.io/2021/02/08/hexo-theme-bamboo-new/' # 左边按钮链接 
+  btnColor: '#323a40'  #  red or #000 or rgba() ..
+  listText: 'CHECK OUT OUR MINECRAFT GAMES'
   list: # list相当于数组对象，[{picture:'xx',title: 'xx', describe: 'xxx',}]根据自己实际情况，增加或者删除
     - picture: '/medias/img/uniHome/worldStructure/world1.svg'
       title: '探索者赛季星球'
       describe: 'The Trailblazer'
+      detail: 'FULCRUM星际城为UNIPLORE服务器三大世界的链接中心 也作为主要活动场所及初次登入点 
+              <br>我们将服务器的几大结构链接成一个整体 并赋予它一个深层次且高拓展性的背景 
+              <br>我们认为好的基础好的内容 能够不断迭代更新的东西才能持续给玩家新鲜感和积极性.
+              <br>现版本星际城及几大结构作为第一赛季基础 
+              <br>后续我们将在运营的过程中持续收集漏洞与不足 包括玩家的意见与及建议 
+              <br>在迭代赛季中展现出来'
     - picture: '/medias/img/uniHome/worldStructure/world2.svg'
       title: '富尔克姆星际城'
       describe: 'Fulcrum Star City'
@@ -799,6 +806,7 @@ worldStructure:
 buildOrgan:
   on: true # 设置为false, 则不显示
   title: '建立你的组织'
+  enTitle: 'Build your organization'
   detail: '集结你的伙伴招募各路玩家 一起组建属于你们的组织 <br> 你可以在组织办公室完成史诗装备的锻造等其他物品的研究制作 <br> 在赛季生存星球建造不会删档的组织基地壮大你们的势力 当然还有抵御那些怪物'
   bottonImg: '/medias/img/uniHome/buildOrgan/buildOrgan.svg'
 
@@ -807,7 +815,19 @@ rolePlay:
   backgroundImg: '/medias/img/uniHome/rolePlay/rolePlay.svg'
   title: '角色扮演 &nbsp &nbsp &nbsp 在这里你可以更换N多种角色外观及武器外观'
   detail: '官方商城有上百种人物外观以及物品贴片装备外观等提供选购.每件商品都有指定编码 以确保它的唯一性 <br> 达到等级要求的团体组织也可以购买制作权限 制作后售卖属于你们组织品牌的商品'
- 
+  swiper:
+    height: '640px'
+    imgs:
+      - 'https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp'
+      - 'https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp'
+    defaultImg: 'https://pic1.zhimg.com/v2-af3ccef61cf58b1a70765747cc1bbeac_b.jpg' # 图片，没有则随机选取
+    showPrevNext: true # 是否显示左右切换按钮
+    autoplay: false # 是否自动轮播
+    showIndicators: true  # 是否显示指示器
+    loop: true # 让轮播看起来是循环的, 例如false的话，到达最后一个轮播图的时候，右按钮不能点击
+    delay: 5000 # 切换延迟时间
+    effect: 'slide' # 'fade': 淡入淡出效果
+      
 
 getAdvice:
   on: true # 设置为false, 则不显示

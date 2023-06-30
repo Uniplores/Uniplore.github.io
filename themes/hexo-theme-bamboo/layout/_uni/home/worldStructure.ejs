@@ -1,47 +1,81 @@
 <div id="worldStructure">
   <div class="structureData">
+    <div class="splitBar"></div>
+
     <div class="top">
-      <div class="left"><%- theme.worldStructure.title %></div>
-      <div class="right">
+      <div class="left">
         <div class="ani animated">
-          <a href="<%= theme.worldStructure.rightBtnLink %>"
+          <a href="<%= theme.worldStructure.btnLink %>"
               class="read-more swiper-btn-color">
-            <%= theme.worldStructure.rightBtnText %>
+            <%= theme.worldStructure.btnText %>
           </a>
         </div>
       </div>
-    </div>
-    <div class="center">
-      <%
-        var structure_list = theme.worldStructure.list || [];
-      %>
-      <% structure_list.forEach(function (item) { %>
-      <div class="onceWorld">
-        <img class="onceWorldImg" src="<%= item.picture%>" mode="scaleToFill" />
-        <div class="title">
-          <%= item.title %>
-        </div>
-        <div class="describe">
-          <%= item.describe %>
-        </div>
+      <div class="right">
+        <%- theme.worldStructure.title %>
       </div>
-      <% }); %>
     </div>
+
+    <div class="listText">
+      <%- theme.worldStructure.listText %>
+    </div>
+
+    <div class="splitBar"></div>
+
+    <div class="center">
+      <div class="worldList">
+        <%
+          var structure_list = theme.worldStructure.list || [];
+       
+        %>
+        <% structure_list.forEach(function (item, index) { %>
+        <div class="onceWorld" @mouseenter="stopAutoPlay(<%- index %>)">
+          <img class="onceWorldImg" src="<%= item.picture %>"
+              mode="scaleToFill" />
+
+          <div class="detail">
+            <div class="title">
+              <%= item.title %>
+            </div>
+            <div class="describe">
+              <%= item.describe %>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+
+
+      <div class="worldDetail">
+        {{ structure_index }}
+      </div>
+    </div>
+
+    <div class="splitBar"></div>
+
     <% if(theme.worldStructure.bootomText) { %>
     <div class="bottom">
       <%- theme.worldStructure.bootomText %>
     </div>
     <% }; %>
+
+    <div class="splitBar"></div>
   </div>
 </div>
 
 <script>
   var vm = new Vue({
     el: "#worldStructure",
-    data: {},
+    data: {
+      structure_index: 0,
+    },
     computed: {},
     mounted() {},
-    methods: {},
+    methods: {
+      stopAutoPlay(index) {
+        this.structure_index = index
+      }
+    },
     created() {}
   });
 </script>
@@ -55,19 +89,18 @@
   }
 
   .structureData {
-    margin: 0 10%;
-    width: 80%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 
     .top {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin: 70px 0 30px 0;
 
-      .left {
+      .right {
         font-size: 30px;
       }
 
@@ -80,44 +113,81 @@
       .swiper-btn-color {
         display: inline-block;
         z-index: 1;
-        background-color: <%- theme.worldStructure.rightBtnColor %>;
-        border: 1px solid <%- theme.worldStructure.rightBtnColor %>;
+        background-color: <%- theme.worldStructure.btnColor %>;
+        border: 1px solid <%- theme.worldStructure.btnColor %>;
       }
+    }
+
+    .listText {
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      color: #BEBEBE;
+      line-height: 2;
+      font-weight: 275;
+      font-family: Neuton;
     }
 
     .center {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 80px;
+      flex-direction: column;
+      margin: 80px 0 60px 0;
 
-      .onceWorld {
+      .worldList {
         display: flex;
-        flex-direction: column;
+        justify-content: space-around;
         align-items: center;
 
-        .onceWorldImg {
-          width: 240px;
-          height: 240px;
-          margin-bottom: 30px;
-        }
+        border-radius: 10px;
+        background: rgba(27, 27, 27, 0.42);
+        padding: 30px 0;
+        margin-bottom: 25px;
 
-        .title {
-          font-size: 18px;
-          line-height: 26px;
-          font-weight: bold;
-        }
 
-        .describe {
-          font-size: 14px;
-          line-height: 26px;
-          font-weight: bold;
+        .onceWorld {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          width: 220px;
+
+
+          .onceWorldImg {
+            width: 140px;
+            height: 140px;
+          }
+
+          .detail {
+            width: 190px;
+            position: absolute;
+            top: 60px;
+            right: -80px;
+
+            .title {
+              font-size: 18px;
+              line-height: 26px;
+              font-weight: bold;
+            }
+
+            .describe {
+              font-size: 14px;
+              line-height: 26px;
+              font-weight: bold;
+            }
+          }
+
         }
+      }
+
+      .worldDetail {
+        width: 100%;
+        height: 55Vh;
+        border-radius: 10px;
+        background: linear-gradient(180deg, rgba(44, 77, 68, 0.42) 0%, rgba(27, 27, 27, 0.00) 100%);
       }
     }
 
     .bottom {
-      margin-top: 130px;
+      margin: 70px 0;
       text-align: center;
       font-size: 35px;
       line-height: 2;
