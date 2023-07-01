@@ -29,7 +29,7 @@
        
         %>
         <% structure_list.forEach(function (item, index) { %>
-        <div class="onceWorld" @mouseenter="stopAutoPlay(<%- index %>)">
+        <div class="onceWorld" data-tab="onceWorld<%- index %>">
           <img class="onceWorldImg" src="<%= item.picture %>"
               mode="scaleToFill" />
 
@@ -47,7 +47,47 @@
 
 
       <div class="worldDetail">
-        {{ structure_index }}
+        <% structure_list.forEach(function (item, index) { %>
+        <div class="onceWorldDetail" style="background: <%= item.background %>;" id="onceWorld<%- index %>">
+          <div class="ow_left">
+            <img class="ow_onceWorldImg" src="<%= item.picture %>"
+                mode="scaleToFill" />
+          </div>
+          <div class="ow_right">
+            <div class="ow_top">
+              <div class="ow_title">
+                <%- item.title %>
+              </div>
+              <div class="ow_describe">
+                <%- item.describe %>
+              </div>
+            </div>
+            <div class="ow_detail">
+              <%- item.detail %>
+            </div>
+            <div class="ow_bottom">
+              <div class="ow_bottom_left">
+                <p>主导者</p>
+                <p>Uniplore ID UNI-181015.MCGAME</p>
+                <p>查看更多详情</p>
+              </div>
+              <div class="ow_bottom_right">
+                <div class="worldColorText">
+                  <div class="origin"
+                      style="background-color: <%= item.worldColor %>;"></div>
+                  <%- item.worldColorText %>
+                </div>
+                <div class="UNI0302Beat">
+                  #UNI0302Beat
+                </div>
+                <img class="ow_worldLogo"
+                    src="/medias/img/uniHome/worldStructure/worldLogo.svg"
+                    mode="scaleToFill" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }); %>
       </div>
     </div>
 
@@ -66,16 +106,39 @@
 <script>
   var vm = new Vue({
     el: "#worldStructure",
-    data: {
-      structure_index: 0,
-    },
+    data: {},
     computed: {},
-    mounted() {},
-    methods: {
-      stopAutoPlay(index) {
-        this.structure_index = index
+    mounted() {
+      // 获取所有的标签和标签内容元素
+      const onceWorlds = document.querySelectorAll('.onceWorld');
+      const onceWorldDetails = document.querySelectorAll(
+        '.onceWorldDetail');
+      if (onceWorlds.length > 0) {
+        // 给每个标签添加点击事件监听器
+        onceWorlds.forEach(tab => {
+          tab.addEventListener('click', () => {
+            // 获取当前标签的data-tab属性值
+            const tabId = tab.getAttribute('data-tab');
+
+            // 移除所有标签的active类名和所有标签内容的active类名
+            onceWorlds.forEach(tab => tab.classList.remove(
+              'active'));
+            onceWorldDetails.forEach(panel => panel.classList
+              .remove(
+                'active'));
+
+            // 添加当前标签和对应的标签内容的active类名
+            tab.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+          });
+        });
+
+        onceWorlds[0].classList.add('active');
+        onceWorldDetails[0].classList.add('active');
       }
+
     },
+    methods: {},
     created() {}
   });
 </script>
@@ -157,7 +220,7 @@
           }
 
           .detail {
-            width: 190px;
+            width: 200px;
             position: absolute;
             top: 60px;
             right: -80px;
@@ -169,12 +232,31 @@
             }
 
             .describe {
-              font-size: 14px;
+              font-size: 12px;
               line-height: 26px;
               font-weight: bold;
             }
           }
 
+        }
+
+        .active {
+          .onceWorldImg {
+            width: 160px !important;
+            height: 160px !important;
+          }
+
+          .detail {
+            .title {
+              font-size: 20px;
+              text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            }
+
+            .describe {
+              font-size: 14px;
+              text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            }
+          }
         }
       }
 
@@ -182,7 +264,99 @@
         width: 100%;
         height: 55Vh;
         border-radius: 10px;
-        background: linear-gradient(180deg, rgba(44, 77, 68, 0.42) 0%, rgba(27, 27, 27, 0.00) 100%);
+        margin-bottom: 60px;
+
+        .onceWorldDetail {
+          display: none;
+          padding: 30px;
+          border-radius: 10px;
+          height: 100%;
+
+          .ow_left {
+            .ow_onceWorldImg {
+              width: 240px;
+              height: 240px;
+              margin: 0 50px 0 0;
+            }
+          }
+
+          .ow_right {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
+            .ow_top {
+              text-align: right;
+              margin: 50px 0 30px 0;
+
+              .ow_title {
+                font-size: 24px;
+                line-height: 26px;
+                font-weight: bold;
+              }
+
+              .ow_describe {
+                font-size: 18px;
+                line-height: 26px;
+                font-weight: bold;
+              }
+            }
+
+            .ow_detail {
+              font-size: 18px;
+              line-height: 1.8;
+              margin-bottom: 50px;
+              flex: 1;
+            }
+
+            .ow_bottom {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              font-size: 8px;
+
+              .ow_bottom_left {
+                display: flex;
+                flex-direction: column;
+                line-height: 2.5;
+              }
+
+              .ow_bottom_right {
+                .worldColorText {
+                  height: 10px;
+                  display: flex;
+                  align-items: center;
+                  width: 130px;
+                  position: relative;
+                  .origin {
+                    position: absolute;
+                    top: -2px;
+                    left: -20px;
+                    border-radius: 10px;
+                    height: 15px;
+                    width: 15px;
+                  }
+                }
+
+                .UNI0302Beat {
+                  margin: 10px 0 40px 0;
+                }
+
+                .ow_worldLogo {
+                  width: 58px;
+                  height: 17px;
+                }
+              }
+            }
+          }
+        }
+
+        .active {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
       }
     }
 
