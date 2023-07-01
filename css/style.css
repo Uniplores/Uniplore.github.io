@@ -178,7 +178,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   color: #fff;
 }
 .bg-floor {
-  background: #192229;
+  background: linear-gradient(330deg, #3a3c40 0%, #030115 100%);
   background-size: cover;
   transition: all 0.3s;
 }
@@ -193,7 +193,6 @@ pre:hover::-webkit-scrollbar-thumb:hover,
 }
 #l_main .l_content {
   flex: 1;
-  margin-left: 15px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -247,6 +246,33 @@ pre:hover::-webkit-scrollbar-thumb:hover,
     width: 100%;
     margin: 0 auto;
   }
+}
+.splitBar {
+  width: 100%;
+  border: 1px solid #767676;
+  position: relative;
+}
+.splitBar::after {
+  content: " ";
+  width: 6px;
+  height: 6px;
+  background: #767676;
+  position: absolute;
+  display: block;
+  left: -1px;
+  top: -3px;
+  border-radius: 4px;
+}
+.splitBar::before {
+  content: " ";
+  width: 6px;
+  height: 6px;
+  background: #767676;
+  position: absolute;
+  display: block;
+  right: 1px;
+  top: -3px;
+  border-radius: 4px;
 }
 #l_side {
   width: 240px;
@@ -1816,6 +1842,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   justify-content: center;
   align-items: center;
   color: #fff;
+  margin-top: 15px;
   background: #192229;
 }
 .footer .footer-main {

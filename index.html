@@ -28,8 +28,6 @@
 
   
   
-    <link href="/" rel="stylesheet">
-  
   
     
 <link rel="stylesheet" href="/js/shareJs/share.min.css">
@@ -217,6 +215,17 @@
               
             </li>
           
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/article" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-file-alt" aria-hidden="true"></i>
+                  
+                  <span class="name">Article</span>
+                </a>
+              
+            </li>
+          
         
         
       </ul>
@@ -272,11 +281,9 @@
     </div>
     <div class="blog-title" id="author-avatar">
       
-        <div class="avatar">
           <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
-        </div>
       
-      <a href="/" class="logo">uniplores</a>
+      <!-- <a href="/" class="logo">uniplores</a> -->
     </div>
     <nav class="navbar">
       <ul class="menu">
@@ -293,84 +300,20 @@
               
             </li>
           
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/article" class="menu-item-link" title="文章">
+                  
+                    <i class="fas fa-file-alt" aria-hidden="true"></i>
+                  
+                  <span class="name">文章</span>
+                </a>
+              
+            </li>
+          
         
       </ul>
       
-      
-        <div id="appSearch">
-  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
-  <transition name="fade">
-    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
-      <div class="message-box animated bounceInDown">
-        <h2>
-          <span>
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <span class="title">本地搜索</span>
-          </span>
-          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
-        </h2>
-        <form class="site-search-form">
-          <input type="text"
-            placeholder="请输入关键字"
-            id="local-search-input" 
-            @click="getSearchFile()"
-            class="st-search-input"
-            v-model="searchInput"
-          />
-        </form>
-        <div class="result-wrapper">
-          <div id="local-search-result" class="local-search-result-cls"></div>
-        </div>
-      </div>
-    </div>
-  </transition>
-</div>
-<script src="/js/local_search.js"></script>
-<script>
-  var body = document.body || document.documentElement || window;
-  var vm = new Vue({
-    el: '#appSearch',
-    data: {
-      dialogVisible: false,
-      searchInput: '',
-      top: 0,
-    },
-    computed: {
-    },
-    mounted() {
-      window.addEventListener('pjax:complete', () => {
-        this.cancelDialogVisible();
-      })
-    },
-    methods: {
-      showDialog() {
-        this.dialogVisible = true;
-        // 防止页面滚动，只能让弹框滚动
-        this.top = $(document).scrollTop()
-        body.style.cssText = 'overflow: hidden;';
-      },
-      getSearchFile() {
-        if (!this.searchInput) {
-          getSearchFile("/search.xml");
-        }
-      },
-      cancelDialogVisible() {
-        this.dialogVisible = false;
-        body.removeAttribute('style');
-        $(document).scrollTop(this.top)
-      },
-    },
-    created() {}
-  })
-</script>
-<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
-<!-- 下面是搜索基本写法 -->
-<!-- <script type="text/javascript" id="local.search.active">
-  var inputArea = document.querySelector("#local-search-input");
-  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
-  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
-</script> -->
-
       
 
     </nav>
@@ -380,7 +323,7 @@
 </header>
         <!-- 内容区域 -->
         
-  <div id="appSwiper">
+<div id="appSwiper">
   <swiper v-cloak ref="mySwiper" :options="swiperOptions">
     <swiper-slide>
       <div class="item swiper-lazy" style="background-position: left center"
@@ -604,11 +547,19 @@
 
 
 
-  <div id="worldStructure">
+
+
+
+<div id="l_main">
+  <div class="l_content uni_content">
+
+    
+    <div id="worldStructure">
   <div class="structureData">
+    <div class="splitBar"></div>
+
     <div class="top">
-      <div class="left">初始赛季的四大世界结构</div>
-      <div class="right">
+      <div class="left">
         <div class="ani animated">
           <a target="_blank" rel="noopener" href="https://yuang01.gitee.io/2021/02/08/hexo-theme-bamboo-new/"
               class="read-more swiper-btn-color">
@@ -616,56 +567,254 @@
           </a>
         </div>
       </div>
+      <div class="right">
+        初始赛季的四大世界结构 <br> Four World Structures
+      </div>
     </div>
+
+    <div class="listText">
+      CHECK OUT OUR MINECRAFT GAMES
+    </div>
+
+    <div class="splitBar"></div>
+
     <div class="center">
-      
-      
-      <div class="onceWorld">
-        <img class="onceWorldImg lazyload placeholder" src="/medias/img/uniHome/worldStructure/world1.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/worldStructure/world1.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
-        <div class="title">
-          探索者赛季星球
+      <div class="worldList">
+        
+        
+        <div class="onceWorld" data-tab="onceWorld0">
+          <img class="onceWorldImg" src="/medias/img/uniHome/worldStructure/world1.svg"
+              mode="scaleToFill" />
+
+          <div class="detail">
+            <div class="title">
+              探索者赛季星球
+            </div>
+            <div class="describe">
+              The Trailblazer
+            </div>
+          </div>
         </div>
-        <div class="describe">
-          The Trailblazer
+        
+        <div class="onceWorld" data-tab="onceWorld1">
+          <img class="onceWorldImg" src="/medias/img/uniHome/worldStructure/world2.svg"
+              mode="scaleToFill" />
+
+          <div class="detail">
+            <div class="title">
+              富尔克姆星际城
+            </div>
+            <div class="describe">
+              Fulcrum Star City
+            </div>
+          </div>
         </div>
+        
+        <div class="onceWorld" data-tab="onceWorld2">
+          <img class="onceWorldImg" src="/medias/img/uniHome/worldStructure/world3.svg"
+              mode="scaleToFill" />
+
+          <div class="detail">
+            <div class="title">
+              上载空间 · 战争星球
+            </div>
+            <div class="describe">
+              Upload Space · War Planet
+            </div>
+          </div>
+        </div>
+        
+        <div class="onceWorld" data-tab="onceWorld3">
+          <img class="onceWorldImg" src="/medias/img/uniHome/worldStructure/world4.svg"
+              mode="scaleToFill" />
+
+          <div class="detail">
+            <div class="title">
+              太空轮盘维度
+            </div>
+            <div class="describe">
+              Space  Wheel 
+            </div>
+          </div>
+        </div>
+        
       </div>
-      
-      <div class="onceWorld">
-        <img class="onceWorldImg lazyload placeholder" src="/medias/img/uniHome/worldStructure/world2.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/worldStructure/world2.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
-        <div class="title">
-          富尔克姆星际城
+
+
+      <div class="worldDetail">
+        
+        <div class="onceWorldDetail" style="background: linear-gradient(180deg, rgba(0, 113, 117, 0.42) 0%, rgba(0, 224, 213, 0.00) 100%);" id="onceWorld0">
+          <div class="ow_left">
+            <img class="ow_onceWorldImg" src="/medias/img/uniHome/worldStructure/world1.svg"
+                mode="scaleToFill" />
+          </div>
+          <div class="ow_right">
+            <div class="ow_top">
+              <div class="ow_title">
+                探索者赛季星球
+              </div>
+              <div class="ow_describe">
+                The Trailblazer
+              </div>
+            </div>
+            <div class="ow_detail">
+              该模式是基于Fulcrum Star City 富尔克姆星际城背景下衍生的时段性世界; 世界以生存为基础  <br>探索拓荒为主调 玩家通过太空电梯下降到星球表面. 探索遗迹 完成故事线的编织. <br>发展自己的势力 成立组织国家或团体.  <br>同时要对抗来自异星的极端天气怪物或者存在领土争议的敌方势力等等威胁  <br>直至星际城吸收完航行能量  <br>再进行下一星球的探索每一个星球都将有新的内容或新的元素出现.
+            </div>
+            <div class="ow_bottom">
+              <div class="ow_bottom_left">
+                <p>主导者</p>
+                <p>Uniplore ID UNI-181015.MCGAME</p>
+                <p>查看更多详情</p>
+              </div>
+              <div class="ow_bottom_right">
+                <div class="worldColorText">
+                  <div class="origin"
+                      style="background-color: #4682B4;"></div>
+                  #4682B4 70,130,180
+                </div>
+                <div class="UNI0302Beat">
+                  #UNI0302Beat
+                </div>
+                <img class="ow_worldLogo"
+                    src="/medias/img/uniHome/worldStructure/worldLogo.svg"
+                    mode="scaleToFill" />
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="describe">
-          Fulcrum Star City
+        
+        <div class="onceWorldDetail" style="background: linear-gradient(180deg, rgba(44, 77, 68, 0.42) 0%, rgba(60, 114, 66, 0.00) 100%);" id="onceWorld1">
+          <div class="ow_left">
+            <img class="ow_onceWorldImg" src="/medias/img/uniHome/worldStructure/world2.svg"
+                mode="scaleToFill" />
+          </div>
+          <div class="ow_right">
+            <div class="ow_top">
+              <div class="ow_title">
+                富尔克姆星际城
+              </div>
+              <div class="ow_describe">
+                Fulcrum Star City
+              </div>
+            </div>
+            <div class="ow_detail">
+              FULCRUM星际城为UNIPLORE服务器三大世界的链接中心 也作为主要活动场所及初次登入点  <br>我们将服务器的几大结构链接成一个整体 并赋予它一个深层次且高拓展性的背景  <br>我们认为好的基础好的内容 能够不断迭代更新的东西才能持续给玩家新鲜感和积极性. <br>现版本星际城及几大结构作为第一赛季基础  <br>后续我们将在运营的过程中持续收集漏洞与不足 包括玩家的意见与及建议  <br>在迭代赛季中展现出来
+            </div>
+            <div class="ow_bottom">
+              <div class="ow_bottom_left">
+                <p>主导者</p>
+                <p>Uniplore ID UNI-181015.MCGAME</p>
+                <p>查看更多详情</p>
+              </div>
+              <div class="ow_bottom_right">
+                <div class="worldColorText">
+                  <div class="origin"
+                      style="background-color: #228B22;"></div>
+                  #228B22 34,139,34
+                </div>
+                <div class="UNI0302Beat">
+                  #UNI0302Beat
+                </div>
+                <img class="ow_worldLogo"
+                    src="/medias/img/uniHome/worldStructure/worldLogo.svg"
+                    mode="scaleToFill" />
+              </div>
+            </div>
+          </div>
         </div>
+        
+        <div class="onceWorldDetail" style="background: linear-gradient(180deg, rgba(80, 67, 53, 0.42) 0%, rgba(27, 27, 27, 0.00) 100%);" id="onceWorld2">
+          <div class="ow_left">
+            <img class="ow_onceWorldImg" src="/medias/img/uniHome/worldStructure/world3.svg"
+                mode="scaleToFill" />
+          </div>
+          <div class="ow_right">
+            <div class="ow_top">
+              <div class="ow_title">
+                上载空间 · 战争星球
+              </div>
+              <div class="ow_describe">
+                Upload Space · War Planet
+              </div>
+            </div>
+            <div class="ow_detail">
+              限时开放政策战争星球开放时段  18：00PM-18：30  日期:周五-周二 <br>开放时段星际城邦的各大分区都将会有大大小小的传送门 所有玩家都可进入战争星球进行激情厮杀 <br>但在开放的最后10分钟无法进场 通常进场后上载附近会有一些地形迸裂  <br>这意味着越早进场的玩家在这方面越安全有更多的时间选择安全的地面.  <br>但也同时意味着更久的战斗时间.   <br>进场的玩家需要在厮杀到最后一刻只剩自己的时刻 传回的传送门才会出现   <br>玩家有2分钟的时间用来捡起来未被收集的物品 2分钟后还未回传将被系统杀掉 并且遗失所有物品奖励.
+            </div>
+            <div class="ow_bottom">
+              <div class="ow_bottom_left">
+                <p>主导者</p>
+                <p>Uniplore ID UNI-181015.MCGAME</p>
+                <p>查看更多详情</p>
+              </div>
+              <div class="ow_bottom_right">
+                <div class="worldColorText">
+                  <div class="origin"
+                      style="background-color: #8B4513;"></div>
+                  #8B4513 139,69,19
+                </div>
+                <div class="UNI0302Beat">
+                  #UNI0302Beat
+                </div>
+                <img class="ow_worldLogo"
+                    src="/medias/img/uniHome/worldStructure/worldLogo.svg"
+                    mode="scaleToFill" />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="onceWorldDetail" style="background: linear-gradient(180deg, rgba(142, 72, 69, 0.42) 0%, rgba(27, 27, 27, 0.00) 100%);" id="onceWorld3">
+          <div class="ow_left">
+            <img class="ow_onceWorldImg" src="/medias/img/uniHome/worldStructure/world4.svg"
+                mode="scaleToFill" />
+          </div>
+          <div class="ow_right">
+            <div class="ow_top">
+              <div class="ow_title">
+                太空轮盘维度
+              </div>
+              <div class="ow_describe">
+                Space  Wheel 
+              </div>
+            </div>
+            <div class="ow_detail">
+              位于人马座星系. 巨大的轮盘外表. 这里是服务器的娱乐场所  <br>诸多的小游戏 <br>( 密室大逃杀、你画我猜、冰雪竞速、Minecraft突破模式、战略征服、 <br>巨幕电影院、等其他娱乐项目） <br>多重玩法 玩家需通过中枢大厅的 上载厅室进行传送 方可进入
+            </div>
+            <div class="ow_bottom">
+              <div class="ow_bottom_left">
+                <p>主导者</p>
+                <p>Uniplore ID UNI-181015.MCGAME</p>
+                <p>查看更多详情</p>
+              </div>
+              <div class="ow_bottom_right">
+                <div class="worldColorText">
+                  <div class="origin"
+                      style="background-color: #FFC0CB;"></div>
+                  #FFC0CB 255,192,203
+                </div>
+                <div class="UNI0302Beat">
+                  #UNI0302Beat
+                </div>
+                <img class="ow_worldLogo"
+                    src="/medias/img/uniHome/worldStructure/worldLogo.svg"
+                    mode="scaleToFill" />
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>
-      
-      <div class="onceWorld">
-        <img class="onceWorldImg lazyload placeholder" src="/medias/img/uniHome/worldStructure/world3.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/worldStructure/world3.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
-        <div class="title">
-          上载空间 · 战争星球
-        </div>
-        <div class="describe">
-          Upload Space · War Planet
-        </div>
-      </div>
-      
-      <div class="onceWorld">
-        <img class="onceWorldImg lazyload placeholder" src="/medias/img/uniHome/worldStructure/world4.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/worldStructure/world4.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
-        <div class="title">
-          太空轮盘维度
-        </div>
-        <div class="describe">
-          Space  Wheel 
-        </div>
-      </div>
-      
     </div>
+
+    <div class="splitBar"></div>
+
     
     <div class="bottom">
       四大各具特色的世界构成了一个完整的世界结构 <br> 主城区域不在只是登入的作用.
     </div>
     
+
+    <div class="splitBar"></div>
   </div>
 </div>
 
@@ -674,7 +823,36 @@
     el: "#worldStructure",
     data: {},
     computed: {},
-    mounted() {},
+    mounted() {
+      // 获取所有的标签和标签内容元素
+      const onceWorlds = document.querySelectorAll('.onceWorld');
+      const onceWorldDetails = document.querySelectorAll(
+        '.onceWorldDetail');
+      if (onceWorlds.length > 0) {
+        // 给每个标签添加点击事件监听器
+        onceWorlds.forEach(tab => {
+          tab.addEventListener('click', () => {
+            // 获取当前标签的data-tab属性值
+            const tabId = tab.getAttribute('data-tab');
+
+            // 移除所有标签的active类名和所有标签内容的active类名
+            onceWorlds.forEach(tab => tab.classList.remove(
+              'active'));
+            onceWorldDetails.forEach(panel => panel.classList
+              .remove(
+                'active'));
+
+            // 添加当前标签和对应的标签内容的active类名
+            tab.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+          });
+        });
+
+        onceWorlds[0].classList.add('active');
+        onceWorldDetails[0].classList.add('active');
+      }
+
+    },
     methods: {},
     created() {}
   });
@@ -682,30 +860,25 @@
 <style lang="scss" scoped>
   #worldStructure {
     width: 100%;
-    height: 100vh;
-    position: relative;
+    min-height: 100vh;
     margin: 0 auto;
     color: #ffffff;
     z-index: 0;
   }
 
   .structureData {
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
-    width: 80%;
-    height: auto;
-    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 
     .top {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin: 70px 0 30px 0;
 
-      .left {
+      .right {
         font-size: 30px;
       }
 
@@ -723,39 +896,187 @@
       }
     }
 
+    .listText {
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      color: #BEBEBE;
+      line-height: 2;
+      font-weight: 275;
+      font-family: Neuton;
+    }
+
     .center {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 80px;
+      flex-direction: column;
+      margin: 80px 0 60px 0;
 
-      .onceWorld {
+      .worldList {
         display: flex;
-        flex-direction: column;
+        justify-content: space-around;
         align-items: center;
 
-        .onceWorldImg {
-          width: 240px;
-          height: 240px;
-          margin-bottom: 30px;
+        border-radius: 10px;
+        background: rgba(27, 27, 27, 0.42);
+        padding: 30px 0;
+        margin-bottom: 25px;
+
+
+        .onceWorld {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          width: 220px;
+
+
+          .onceWorldImg {
+            width: 140px;
+            height: 140px;
+          }
+
+          .detail {
+            width: 200px;
+            position: absolute;
+            top: 60px;
+            right: -80px;
+
+            .title {
+              font-size: 18px;
+              line-height: 26px;
+              font-weight: bold;
+            }
+
+            .describe {
+              font-size: 12px;
+              line-height: 26px;
+              font-weight: bold;
+            }
+          }
+
         }
 
-        .title {
-          font-size: 18px;
-          line-height: 26px;
-          font-weight: bold;
+        .active {
+          .onceWorldImg {
+            width: 160px !important;
+            height: 160px !important;
+          }
+
+          .detail {
+            .title {
+              font-size: 20px;
+              text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            }
+
+            .describe {
+              font-size: 14px;
+              text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            }
+          }
+        }
+      }
+
+      .worldDetail {
+        width: 100%;
+        height: 55Vh;
+        border-radius: 10px;
+        margin-bottom: 60px;
+
+        .onceWorldDetail {
+          display: none;
+          padding: 30px;
+          border-radius: 10px;
+          height: 100%;
+
+          .ow_left {
+            .ow_onceWorldImg {
+              width: 240px;
+              height: 240px;
+              margin: 0 50px 0 0;
+            }
+          }
+
+          .ow_right {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
+            .ow_top {
+              text-align: right;
+              margin: 50px 0 30px 0;
+
+              .ow_title {
+                font-size: 24px;
+                line-height: 26px;
+                font-weight: bold;
+              }
+
+              .ow_describe {
+                font-size: 18px;
+                line-height: 26px;
+                font-weight: bold;
+              }
+            }
+
+            .ow_detail {
+              font-size: 18px;
+              line-height: 1.8;
+              margin-bottom: 50px;
+              flex: 1;
+            }
+
+            .ow_bottom {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              font-size: 8px;
+
+              .ow_bottom_left {
+                display: flex;
+                flex-direction: column;
+                line-height: 2.5;
+              }
+
+              .ow_bottom_right {
+                .worldColorText {
+                  height: 10px;
+                  display: flex;
+                  align-items: center;
+                  width: 130px;
+                  position: relative;
+                  .origin {
+                    position: absolute;
+                    top: -2px;
+                    left: -20px;
+                    border-radius: 10px;
+                    height: 15px;
+                    width: 15px;
+                  }
+                }
+
+                .UNI0302Beat {
+                  margin: 10px 0 40px 0;
+                }
+
+                .ow_worldLogo {
+                  width: 58px;
+                  height: 17px;
+                }
+              }
+            }
+          }
         }
 
-        .describe {
-          font-size: 14px;
-          line-height: 26px;
-          font-weight: bold;
+        .active {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
         }
       }
     }
 
     .bottom {
-      margin-top: 130px;
+      margin: 70px 0;
       text-align: center;
       font-size: 35px;
       line-height: 2;
@@ -763,14 +1084,15 @@
     }
   }
 </style>
+    
 
-
-
-  <div id="buildOrgan">
+    
+    <div id="buildOrgan">
   <div class="buildOrganData">
     <div class="top">
       <div class="title">
-        建立你的组织
+        <p class="firstLister">建立你的组织</p>
+        <p class="firstLister">Build your organization</p>
       </div>
       <div class="detail">
         集结你的伙伴招募各路玩家 一起组建属于你们的组织 <br> 你可以在组织办公室完成史诗装备的锻造等其他物品的研究制作 <br> 在赛季生存星球建造不会删档的组织基地壮大你们的势力 当然还有抵御那些怪物
@@ -784,6 +1106,8 @@
           mode="scaleToFill">
     </div>
     
+
+    <div class="splitBar"></div>
   </div>
 </div>
 
@@ -800,23 +1124,19 @@
 <style lang="scss" scoped>
   #buildOrgan {
     width: 100%;
-    height: 100vh;
-    position: relative;
+    min-height: 100vh;
     margin: 0 auto;
     color: #ffffff;
     z-index: 0;
   }
 
   .buildOrganData {
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
-    width: 80%;
-    height: auto;
-    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-top: 80px;
 
     .top {
       display: flex;
@@ -827,16 +1147,25 @@
         font-weight: bold;
         font-size: 34px;
         margin-bottom: 30px;
+
+        .firstLister {
+          &:first-letter {
+            font-size: 150%;
+          }
+        }
       }
 
       .detail {
+        width: 100%;
         line-height: 2;
         font-size: 20px;
+        text-align: right;
       }
     }
 
     .bottom {
       width: 100%;
+      margin-bottom: 60px;
 
       .bottomImg {
         width: 100%;
@@ -845,176 +1174,193 @@
     }
   }
 </style>
+    
 
-
-
-  <div id="rolePlay">
+    
+    <div id="rolePlay">
   <div class="rolePlayData">
     <div class="top">
       <div class="title">
-        角色扮演<br>在这里你可以更换N多种角色外观及武器外观
+        角色扮演 &nbsp &nbsp &nbsp 在这里你可以更换N多种角色外观及武器外观
       </div>
       <div class="detail">
         官方商城有上百种人物外观以及物品贴片装备外观等提供选购.每件商品都有指定编码 以确保它的唯一性 <br> 达到等级要求的团体组织也可以购买制作权限 制作后售卖属于你们组织品牌的商品
       </div>
     </div>
+
+    <div class="splitBar"></div>
+
     <div class="center">
       
-      
-      <div class="onceRole">
-        
-        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/mobile.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/mobile.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
-        <div class="title">
-          Mobile Game Development
-        </div>
-        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
-            mode="scaleToFill" />
-        
+      <div class="swiper-length" style="display: none;">2
       </div>
-      
-      <div class="onceRole">
-        
-        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/pc.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/pc.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
-        <div class="title">
-          PC Game Development
-        </div>
-        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
-            mode="scaleToFill" />
-        
+      <div id="uniSwiper" @mouseenter="stopAutoPlay()"
+          @mouseleave="startAutoPlay()">
+        <swiper class="uniSwiper" ref="uniSwiper"
+            style="height:640px;"
+            :options="swiperOptions">
+
+          
+          <swiper-slide>
+            <img class="no-lazy"
+                src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp"
+                style="width:100%;height:100%;object-fit: cover;">
+          </swiper-slide>
+          
+          <swiper-slide>
+            <img class="no-lazy"
+                src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp"
+                style="width:100%;height:100%;object-fit: cover;">
+          </swiper-slide>
+          
+          <div class="swiper-pagination" slot="pagination" pointer
+              style="">
+          </div>
+          <div class="swiper-button-prev swiper-button-white" pointer
+              slot="button-prev"
+              style="">
+          </div>
+          <div class="swiper-button-next swiper-button-white" pointer
+              slot="button-next"
+              style="">
+          </div>
+        </swiper>
       </div>
-      
-      <div class="onceRole">
-        
-        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/ps4.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/ps4.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
-        <div class="title">
-          PS4 Game Development
-        </div>
-        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
-            mode="scaleToFill" />
-        
-      </div>
-      
-      <div class="onceRole">
-        
-        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/solutions.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/solutions.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
-        <div class="title">
-          AR/VR Solutions
-        </div>
-        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
-            mode="scaleToFill" />
-        
-      </div>
-      
-      <div class="onceRole">
-        
-      </div>
-      
-      <div class="onceRole">
-        
-        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/design.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/design.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
-        <div class="title">
-          AR/ VR design
-        </div>
-        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
-            mode="scaleToFill" />
-        
-      </div>
-      
-      <div class="onceRole">
-        
-        <img class="onceRoleImg lazyload placeholder" src="/medias/img/uniHome/rolePlay/modelings.svg" class="lazyload placeholder" data-srcset="/medias/img/uniHome/rolePlay/modelings.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" mode="scaleToFill" />
-        <div class="title">
-          3D Modelings
-        </div>
-        <img class="arrow" src="/medias/img/uniHome/rolePlay/arrow.svg"
-            mode="scaleToFill" />
-        
-      </div>
-      
+
     </div>
 
+    <div class="splitBar"></div>
   </div>
 </div>
 
 <script>
+  var loop = JSON.parse('true');
+  var effect = 'slide';
+  var delay = '5000';
+  var autoplay = JSON.parse('false');
   var vm = new Vue({
     el: "#rolePlay",
-    data: {},
-    computed: {},
+    data: {
+      swiperOptions: {
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true // 允许点击小圆点跳转
+        },
+        loop: loop ? true : false,
+        effect, // fade
+        autoplay: autoplay ? {
+          delay,
+          disableOnInteraction: false // 手动切换之后继续自动轮播
+        } : false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      }
+    },
+    computed: {
+      swiper() {
+        return this.$refs.uniSwiper.$swiper
+      }
+    },
     mounted() {},
-    methods: {},
+    methods: {
+      stopAutoPlay() {
+        autoplay && this.swiper.autoplay.stop();
+      },
+      startAutoPlay() {
+        autoplay && this.swiper.autoplay.start();
+      },
+    },
     created() {}
   });
 </script>
 <style>
   #rolePlay {
     width: 100%;
-    height: 100vh;
-    position: relative;
-    margin: 0 auto;
+    min-height: 100vh;
+    margin: 30px auto;
     color: #ffffff;
     z-index: 0;
-    background-image: url('/medias/img/uniHome/rolePlay/rolePlay.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 
   .rolePlayData {
     width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 
     .top {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin-bottom: 100px;
+      align-items: flex-start;
+      margin-bottom: 70px;
 
       .title {
-        text-align: center;
         font-weight: bold;
-        font-size: 30px;
-        margin-bottom: 25px;
+        font-size: 22px;
+        margin-bottom: 40px;
       }
 
       .detail {
-        text-align: center;
         line-height: 2;
         font-size: 16px;
       }
     }
 
     .center {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-row-gap: 60px;
-      grid-column-gap: 100px;
+      width: 100%;
+      margin: 20px 0;
 
-      .onceRole {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      .uniSwiper .swiper-slide {
+        width: 100%;
+      }
 
-        .onceRoleImg {
-          height: 65px;
-          width: 65px;
+      .swiper-button-prev {
+        padding: 10px 10px;
+        transition: background 0.2s;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.2);
         }
+      }
 
-        .title {
-          margin: 30px 0;
+      .swiper-button-next {
+        padding: 10px 10px;
+        transition: background 0.2s;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.2);
         }
+      }
+
+
+      .swiper-pagination-bullet-active {
+        opacity: 1;
+        background-color: #FA9021 !important;
       }
     }
   }
 </style>
+    
+
+
+    <!-- 背景 -->
+    <div class="bg-floor" id="home-bg-floor" style="
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+      "></div>
+  </div>
+</div>
 
 
 
-  <div id="getAdvice">
+<div id="getAdvice">
   <div class="getAdviceData">
     <div class="top">
       <div class="title">
@@ -1045,6 +1391,8 @@
         </div>
       </div>
     </div>
+
+    <div class="splitBar"></div>
 
   </div>
   
@@ -1090,7 +1438,7 @@
     .backgroundImg {
       position: absolute;
       right: 0;
-      bottom: 0;
+      bottom: -15px;
       height: 750px;
       z-index: 1;
     }
@@ -1098,9 +1446,9 @@
 
   .getAdviceData {
     top: 50%;
-    left: 10%;
+    left: 15%;
     transform: translateY(-50%);
-    width: 80%;
+    width: 70%;
     height: auto;
     position: absolute;
     display: flex;
@@ -1133,6 +1481,7 @@
       background: #1C140F;
       border-radius: 15px;
       padding: 40px 50px;
+      margin-bottom: 300px;
 
       .title {
         font-size: 34px;
@@ -1177,184 +1526,14 @@
 
 
 
-<div id="l_main">
-  <div class="l_content">
-
-    <!-- 背景 -->
-    <div class="bg-floor" id="home-bg-floor" style="
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-      "></div>
-  </div>
-</div>
+<style lang="scss" scoped>
+</style>
       </main>
     </div>
 
     <!-- 页脚 -->
     
   
-  
-    <!-- 底部鱼儿跳动效果，依赖于jquery-->
-<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
-<script>
-  var RENDERER = {
-    POINT_INTERVAL: 5,
-    FISH_COUNT: 3,
-    MAX_INTERVAL_COUNT: 50,
-    INIT_HEIGHT_RATE: .5,
-    THRESHOLD: 50,
-    FISH_COLOR: '',
-    init: function () {
-      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
-    },
-    setFishColor: function () {
-      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
-      if (isDark) {
-        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
-      } else {
-        this.FISH_COLOR = '' || '#192229';
-      }
-    },
-    setParameters: function () {
-      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
-    },
-    createSurfacePoints: function () {
-      var t = Math.round(this.width / this.POINT_INTERVAL);
-      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
-      for (var i = 1; i < t; i++) {
-        var e = new SURFACE_POINT(this, i * this.pointInterval),
-          h = this.points[i - 1];
-        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
-      }
-    },
-    reconstructMethods: function () {
-      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
-    },
-    setup: function () {
-      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
-        width: this.width,
-        height: this.height
-      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
-    },
-    watchWindowSize: function () {
-      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
-    },
-    clearTimer: function () {
-      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
-    },
-    jdugeToStopResize: function () {
-      var t = this.$window.width(),
-        i = this.$window.height(),
-        e = t == this.tmpWidth && i == this.tmpHeight;
-      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
-    },
-    bindEvent: function () {
-      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
-    },
-    getAxis: function (t) {
-      var i = this.$container.offset();
-      return {
-        x: t.clientX - i.left + this.$window.scrollLeft(),
-        y: t.clientY - i.top + this.$window.scrollTop()
-      }
-    },
-    startEpicenter: function (t) {
-      this.axis = this.getAxis(t)
-    },
-    moveEpicenter: function (t) {
-      var i = this.getAxis(t);
-      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
-    },
-    generateEpicenter: function (t, i, e) {
-      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
-        var h = Math.round(t / this.pointInterval);
-        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
-      }
-    },
-    reverseVertical: function () {
-      this.reverse = !this.reverse;
-      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
-    },
-    controlStatus: function () {
-      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
-      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
-      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
-    },
-    render: function () {
-      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
-      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
-      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
-      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
-      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
-    }
-  },
-  SURFACE_POINT = function (t, i) {
-    this.renderer = t, this.x = i, this.init()
-  };
-  SURFACE_POINT.prototype = {
-    SPRING_CONSTANT: .03,
-    SPRING_FRICTION: .9,
-    WAVE_SPREAD: .3,
-    ACCELARATION_RATE: .01,
-    init: function () {
-      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
-        previous: 0,
-        next: 0
-      }
-    },
-    setPreviousPoint: function (t) {
-      this.previous = t
-    },
-    setNextPoint: function (t) {
-      this.next = t
-    },
-    interfere: function (t, i) {
-      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
-    },
-    updateSelf: function () {
-      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
-    },
-    updateNeighbors: function () {
-      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
-    },
-    render: function (t) {
-      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
-    }
-  };
-  var FISH = function (t) {
-    this.renderer = t, this.init()
-  };
-  FISH.prototype = {
-    GRAVITY: .4,
-    init: function () {
-      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
-    },
-    getRandomValue: function (t, i) {
-      return t + (i - t) * Math.random()
-    },
-    reverseVertical: function () {
-      this.isOut = !this.isOut, this.ay *= -1
-    },
-    controlStatus: function (t) {
-      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
-    },
-    render: function (t) {
-      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
-    }
-  }, $(function () {
-    RENDERER.init()
-    $('.dark').click(function () {
-      setTimeout(() => {
-        RENDERER.setFishColor();
-        RENDERER.context.fill();
-      });
-    })
-  });
-</script>
   
   <div class="footer bg-color">
     <div class="footer-main">
@@ -1367,7 +1546,7 @@
       
         
           <div class="footer-copyright">
-            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/yuang01">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+            <p>Copyright © 2023 - 2023 prodesigner All rights Rcerved </p>
 
           </div>
         
@@ -1412,8 +1591,6 @@
     
 
     <!-- 图片放大 -->
-    
-      <script src="/"></script>
     
 
     <!-- 百度解析 -->
